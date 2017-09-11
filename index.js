@@ -9,8 +9,9 @@ const parse = commandLineArgs(optionDefinitions)
 
 const getCurrentPrice = async (id) => {
   const url = `https://api.coinmarketcap.com/v1/ticker/${id}/`
-  const res =  await fetch(url).then(x=> x.json())
-  console.log(res[0].price_usd + ' USD')
+  const obj =  await fetch(url).then(x=> x.json())
+  const res = obj[0]
+  console.log(res.price_usd + ' USD | ' + '24h Change: ' + res.percent_change_24h + '%')
 }
 
 getCurrentPrice(parse.coin)
