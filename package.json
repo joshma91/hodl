@@ -1,0 +1,14 @@
+{
+  "name": "hodl",
+  "version": "1.0.0",
+  "description": "Repo to use Coinmarketcap API from terminal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^1.7.3"
+  }
+}
