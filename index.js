@@ -53,20 +53,17 @@ const getCurrentPrice = async (id, numCoins) => {
   const url = `https://api.coinmarketcap.com/v1/ticker/${id}/`
   const obj =  await fetch(url).then(x=> x.json())
   const res = obj[0]
-  
-  if(parse.worth) {
-    const numCoinsInFloat = parseFloat(numCoins.replace(',', ''))
-    const valueInCAD = numCoinsInFloat*res.price_usd*1.27;
-    outStr = res.name + ': ' + res.price_usd + ' USD | ' + '24h Change: ' + res.percent_change_24h + '% | '  + 'Value: ' + valueInCAD;
-    total += valueInCAD;
-  } else {
-    outStr = res.name + ': ' + res.price_usd + ' USD | ' + '24h Change: ' + res.percent_change_24h + '%'; 
-  }
+
+  const numCoinsInFloat = parseFloat(numCoins.replace(',', ''))
+  const valueInCAD = numCoinsInFloat*res.price_usd*1.27;
+  outStr = res.name + ': ' + res.price_usd + ' USD | ' + '24h Change: ' + res.percent_change_24h + '% | '  + 'Value: ' + valueInCAD;
+  total += valueInCAD;
+ 
   console.log(outStr)
 }
 
 if (parse.coin){
-    getCurrentPrice(parse.coin)
+    getCurrentPrice(parse.coin, '0')
 } else {
     runAll();
 }
